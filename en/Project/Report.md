@@ -2,7 +2,7 @@
 
 This project uses simple Machine Learning algorythms to predict if a user will like or not a set of images according to the images he liked in the past. 
 
-This project was made by FAIN THony and LONCHAMBON Alexis as part of a Machine Learning project for the 8th semester of Computer Science Engineering at CPE Lyon. 
+This project was made by `FAIN Thony` and `LONCHAMBON Alexis` as part of a Machine Learning project for the 8th semester of Computer Science Engineering at CPE Lyon. 
 
 > ## Goal of the Project
 
@@ -38,7 +38,7 @@ The provided `ipynb` file is a Jupyter Notebook allowing us to run each step of 
     (if you already have a `db_images.json` file ready, run from `Open Color-Tagged database`)
 
 
-## Data Sources
+> ## Data Sources
 
 The preset data source is a WikiData query for the list of all planes with their images. 
 There are a loarge number of planes in the world with varying types such as jet or propeller driven, military or civilian, etc... 
@@ -50,7 +50,7 @@ Our objective (if we had time to do it) was to use AI image classification to ta
 
 All images used on wikimedia are under Public Domain or Creative Commons Share Alike
 
-## Size of your data
+> ## Size of your data
 
 As mentionned previously, the size of our data is around 500 images but only 250 are used as they have exif tags embedded.  
 If AI Image Classification is used, the dataset could use all 500 images from the Wikidata query.  
@@ -59,7 +59,7 @@ As new images are added to the Wikidata database, the dataset is subject to chan
 
 Users are also allowed to use their own dataset as long as they follow the right steps described in the `Goal of the project` part of this report.
 
-## Information Stored for each image
+> ## Information Stored for each image
 
 The image dataset is parsed and filtered to make new datasets ready for use. 
 
@@ -67,11 +67,11 @@ The first dataset `db.json` is made from the images downloaded from the Wikidata
 
 The second dataset `db_images.json` is made from processe versions of each imaged to add 3 dominant colors to the tags. Dominant colors are processed with `MiniBatchKmeans` algorythm and stored as RGB values. For the final prediction, we convert those RGB values to the colsest color name according to the `CSS3` standard.
 
-# Information concerning user preferences
+> ## Information concerning user preferences
 
 For user preferences, we only use whether or not the user liked an image.
 
-# Machine Learning models used
+> ## Machine Learning models used
 
 To classify and tag the images we initially used `KMeans` algorythm and then switched to the lighter `MiniBatchKmeans`. It allowed us to correctly identify the dominant colors of each image of the dataset and create a database accordingly while still being fast enough (and using all core of the CPU). The number of dominant colors can be altered via the settings.
 
@@ -81,13 +81,11 @@ It trains on a provided set of data and builds n (here we use 10) decision trees
 Here are examples of trained Decision trees : 
 
 ![img](./doc/rfc1.png)
-![img](./doc/rfc2.png)
 ![img](./doc/rfc3.png)
-![img](./doc/rfc4.png)
 ![img](./doc/rfc5.png)
 
 
-## Self-evaluation
+> ## Self-evaluation
 
 There is much to improve on this project. Performance can be greatly improved and data can be cleaned better.  
 I wish we had time to use the AI classifier to have accurate tags instead of relying on exif data and color dominance.  
@@ -96,3 +94,10 @@ It is also notable to say that color dominance was not the best tag to use eithe
 
 The dataset format can be greatly improved for ease of use, as well as user interaction as for now, there is no real way to input user preference : for data purposes, liked images are randomly selected with a 0.1 chance of being liked. 
 
+Work was not split evenly between devs as one of us had more experience and motivation than the other. Regardless, we both understood the different Machine Learning models and how Data Mining works. 
+
+I also think more models could have been explored such as `DecisionTreeClassifier` to give a note on the image instead of a binary answer.  
+
+> ## Conclusion
+
+There is much to improve on this program and with enough time and dedication, it can actually work pretty accurately. 
