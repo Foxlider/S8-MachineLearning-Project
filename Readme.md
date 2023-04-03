@@ -1,6 +1,6 @@
 # QBIRS (Quite Basic Image Recommendation System)
 
-This project uses simple Machine Learning algorythms to predict if a user will like or not a set of images according to the images he liked in the past. 
+This project uses simple Machine Learning algorithms to predict if a user will like or not a set of images according to the images he liked in the past. 
 
 This project was made by `FAIN Thony` and `LONCHAMBON Alexis` as part of a Machine Learning project for the 8th semester of Computer Science Engineering at CPE Lyon. 
 
@@ -65,7 +65,7 @@ The image dataset is parsed and filtered to make new datasets ready for use.
 
 The first dataset `db.json` is made from the images downloaded from the Wikidata query. All available `Exif` tags are extracted as well as orientation, width and height of the image. In the exif tags, only `Make`, `Model`, `Resolution`, and `ISO` are used for now as they were the most logical to differentiate images. 
 
-The second dataset `db_images.json` is made from processe versions of each imaged to add 3 dominant colors to the tags. Dominant colors are processed with `MiniBatchKmeans` algorythm and stored as RGB values. For the final prediction, we convert those RGB values to the colsest color name according to the `CSS3` standard.
+The second dataset `db_images.json` is made from processe versions of each imaged to add 3 dominant colors to the tags. Dominant colors are processed with `MiniBatchKmeans` algorithm and stored as RGB values. For the final prediction, we convert those RGB values to the colsest color name according to the `CSS3` standard.
 
 > ## Information concerning user preferences
 
@@ -73,7 +73,7 @@ For user preferences, we only use whether or not the user liked an image.
 
 > ## Machine Learning models used
 
-To classify and tag the images we initially used `KMeans` algorythm and then switched to the lighter `MiniBatchKmeans`. It allowed us to correctly identify the dominant colors of each image of the dataset and create a database accordingly while still being fast enough (and using all core of the CPU). The number of dominant colors can be altered via the settings.
+To classify and tag the images we initially used `KMeans` algorithm and then switched to the lighter `MiniBatchKmeans`. It allowed us to correctly identify the dominant colors of each image of the dataset and create a database accordingly while still being fast enough (and using all core of the CPU). The number of dominant colors can be altered via the settings.
 
 To predict the image likeliness to be liked, we used the `RandomForestClassifier` to be able to use a large amount of tags and use the color clusters easily.  
 It trains on a provided set of data and builds n (here we use 10) decision trees with different values on a certain amount of levels (here we used 5 to get more accurate results). When provided with an input, each decision tree will vote for a result (here, we have only `likes` or `yikes`) and the most results wins.
